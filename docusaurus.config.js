@@ -69,8 +69,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          blogTitle: "Blog title",
-          blogDescription: "Blog",
+          blogTitle: "Latest News",
+          blogDescription: "Strategy, Research and Insights",
           blogListComponent: "@theme/BlogListPage",
           blogPostComponent: "@theme/BlogPostPage",
           truncateMarker: /<!--\s*(truncate)\s*-->/,
