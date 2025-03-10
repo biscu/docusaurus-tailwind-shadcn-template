@@ -2,6 +2,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { motion } from "motion/react";
 import Preload from "@site/src/components/Preload";
+import { Button } from "../components/ui/button"
+
 
 
 export default function Home() {
@@ -54,7 +56,7 @@ export default function Home() {
         >
         The one place of information for design, usability, accessibility and strategy.
         </motion.p>
-       
+        <Button variant="outline">Button</Button>
       </div>
     </Layout>
   );
