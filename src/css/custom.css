@@ -6,6 +6,16 @@
 
 @custom-variant dark (&:is([data-theme="dark"] *));
 
+@layer base {
+  @font-face {
+    font-family: "PostnordRegular";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("../../static/font/postnordsansregular.woff2") format("woff2");
+  }
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -127,44 +137,104 @@
 :root {
   /* Docusaurus vars */
   --prism-background-color: #edefff;
-  --ifm-footer-background-color: #fff;
-  --ifm-footer-link-color: #333;
-  --ifm-code-font-size: 95%;
-  --ifm-color-primary: #044cc1;
-  --ifm-h1-font-size: 2.5rem;
-  --docusaurus-highlighted-code-line-bg: #0000001a;
-  --ifm-global-shadow-tl: 2px 3px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, system-ui, -apple-system,
-    sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol';
-  --menu-link-active: rgba(0, 0, 0, 0.1);
-  --ifm-menu-link-padding-vertical: 0.5rem;
-  --docs-fg-base: #030712;
-  --ifm-menu-color-active: var(--docs-fg-base);
+  --font-family-base: "PostnordRegular" !important;
+  /* Accent */
+  --ifm-color-primary: #005d92 !important;
 
-  /* Docsearch color */
-  --docsearch-key-gradient: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
-  --docsearch-key-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 2px 1px #1e235a66;
-  --docsearch-muted-color: #969faf;
+  /* Global Background color*/
+  --ifm-background-color: #fdfeff !important;
+  --ifm-background-color-inverted: #101010 !important;
+  --ifm-background-color-subtle: color-mix(
+    in oklab,
+    var(--ifm-background-color) 97%,
+    black
+  ) !important;
+
+  /* Color of the navbar/sidebar/toc divider*/
+  --ifm-toc-border-color: color-mix(
+    in oklab,
+    var(--ifm-background-color) 97%,
+    black
+  ) !important;
+
+  /* Text Color*/
+  --ifm-heading-color: #101010 !important;
+  --ifm-heading-color-inverted: #e9e9e9 !important;
+  --ifm-menu-color-background-hover: color-mix(
+    in oklab,
+    var(--ifm-background-color) 97%,
+    black
+  ) !important;
+  --ifm-menu-color-background-active: color-mix(
+    in oklab,
+    var(--ifm-background-color) 97%,
+    black
+  ) !important;
+
+  --ifm-color-info-contrast-background: #d3d2fd !important;
+  --ifm-color-warning-contrast-background: #ffe7ac !important;
+  --ifm-color-danger-contrast-background: #fcbfbd !important;
+  --ifm-color-success-contrast-background: #b7edce !important;
+  --ifm-color-success: #b7edce !important;
+  --ifm-color-error: #fcbfbd !important;
+  --ifm-font-family-base: "PostnordRegular" !important;
+
+  --ifm-caret-color-hover: color-mix(
+    in oklab,
+    var(--ifm-menu-color-background-hover) 97%,
+    black
+  ) !important;
 }
 
 html[data-theme='dark'] {
-  /* Docusaurus color */
-  --prism-background-color: #1d2144;
-  --ifm-background-color: #14102c;
-  --ifm-background-surface-color: #14102c;
-  --ifm-footer-link-color: #dadde1;
-  --ifm-color-primary: #16ad8d;
-  --ifm-menu-color-background-active: #ffffff1a;
-  --menu-link-active: rgba(255, 255, 255, 0.1);
-  --ifm-menu-color-active: var(--ifm-color-primary);
+  /* Accent */
+  --ifm-color-primary: #32b6e2 !important;
 
-  /* Docsearch color */
-  --table-of-contents-color: #e8e8e8;
-  --docusaurus-highlighted-code-line-bg: #0000004d;
-  --docsearch-muted-color: #7f8497;
-  --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
-  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 #0304094d;
+  /* Global Background color*/
+  --ifm-background-color: #101010 !important;
+  --ifm-background-color-subtle: color-mix(
+    in oklab,
+    var(--ifm-background-color) 95%,
+    white
+  ) !important;
+  --ifm-background-color-inverted: #fdfeff !important;
+
+  /* Color of the navbar/sidebar/toc divider*/
+  --ifm-toc-border-color: color-mix(
+    in oklab,
+    var(--ifm-background-color) 95%,
+    white
+  ) !important;
+
+  /* Text Color*/
+  --ifm-heading-color: #e9e9e9 !important;
+  --ifm-heading-color-inverted: #101010 !important;
+  --ifm-menu-color-background-hover: color-mix(
+    in oklab,
+    var(--ifm-background-color) 95%,
+    white
+  ) !important;
+  --ifm-menu-color-background-active: color-mix(
+    in oklab,
+    var(--ifm-background-color) 95%,
+    white
+  ) !important;
+
+  --ifm-navbar-search-input-background-color: #081732 !important;
+
+  --ifm-color-info-contrast-background: #03015c !important;
+  --ifm-color-warning-contrast-background: #3b2a00 !important;
+  --ifm-color-danger-contrast-background: #3c0301 !important;
+  --ifm-color-success-contrast-background: #033719 !important;
+  --ifm-color-success: #033719 !important;
+  --ifm-color-error: #3c0301 !important;
+  --ifm-font-family-base: "PostnordRegular" !important;
+
+  --ifm-caret-color-hover: color-mix(
+    in oklab,
+    var(--ifm-menu-color-background-hover) 95%,
+    white
+  ) !important;
 }
 
 @utility blog-tags {
