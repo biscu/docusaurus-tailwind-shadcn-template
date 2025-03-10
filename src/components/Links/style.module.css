@@ -1,0 +1,21 @@
+.extLinkContainer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.extLink {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-radius: 8px;
+  margin-left: -0.5rem;
+  color: var(--ifm-font-color-base);
+}
+
+.extLink:hover {
+  background: var(--ifm-menu-color-background-hover);
+  text-decoration: none;
+}

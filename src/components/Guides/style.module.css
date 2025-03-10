@@ -1,0 +1,44 @@
+.do {
+  background-color: var(--ifm-color-success);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 16px;
+  width: 100%;
+  border-radius: 0px 0px 16px 16px;
+  margin-bottom: 0px;
+}
+.dont {
+  background-color: var(--ifm-color-error);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 16px;
+  width: 100%;
+  border-radius: 0px 0px 16px 16px;
+  margin-bottom: 0px;
+}
+
+.image {
+  border-radius: 16px 16px 0px 0px;
+  overflow: hidden;
+  display: flex;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 8px;
+  color: var(--ifm-font-color-base);
+}
+.text {
+  color: var(--ifm-font-color-base);
+}
+.containerGuides {
+  display: flex;
+  gap: 0px;
+  flex: 1 0 45%;
+  flex-direction: column;
+}

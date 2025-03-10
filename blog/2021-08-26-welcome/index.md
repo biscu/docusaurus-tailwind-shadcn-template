@@ -2,7 +2,7 @@
 slug: welcome
 title: Welcome
 image: https://res.cloudinary.com/thanhnam/image/upload/v1736787946/project/docusaurus-tailwind-shadcn-template/blog_vep2ri.jpg
-authors: [slorber, yangshun, thanhnamnguyen]
+authors: [davide]
 tags: [facebook, hello, docusaurus]
 ---
 

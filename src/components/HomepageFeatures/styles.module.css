@@ -1,0 +1,53 @@
+@import url("@site/src/pages/index.module.css");
+
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--rally-color-background-inverted);
+  margin-bottom: 3000px;
+  z-index: 0;
+  border-radius: 24px;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+.feautureTitle {
+  letter-spacing: -0.1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--rally-color-primary);
+}
+
+.linkWrap:hover {
+  text-decoration: none;
+}
+
+.feautureParagraph {
+  letter-spacing: -0rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--rally-color-primary);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.feautureCard {
+  border-radius: 16px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  transition: all 0.05s ease-in;
+}
+.feautureCard:hover {
+}
+
+.header {
+  font-size: 5rem;
+  color: var(--rally-color-primary);
+}

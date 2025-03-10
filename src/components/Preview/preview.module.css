@@ -1,0 +1,11 @@
+.container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--ifm-menu-color-background-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ifm-code-border-radius);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
