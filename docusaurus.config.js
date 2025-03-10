@@ -64,7 +64,6 @@ const config = {
         items: [
           { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { label: 'Petstore API', position: 'left', to: '/docs/category/petstore-versioned-api' },
           {
             'href': 'https://github.com/namnguyenthanhwork/docusaurus-tailwind-shadcn-template',
             'position': 'right',
