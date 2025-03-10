@@ -114,15 +114,14 @@ export const BirdView = () => {
       <div className="mb-8 space-y-4">
         <Bird size={24} />
         <h1 className="text-2xl font-bold">Birdview</h1>
-        <div className="flex flex-row gap-4 pb-12 max-w-full">
+        <div className="flex md:flex-row gap-4 pb-12 max-w-full flex-col">
           <SearchBar
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             placeholder="Search screens..."
           />
           <div className="flex flex-row gap-4">
-            <div>
-              <Select
+            <Select
                 options={[
                   { value: "", label: "All tags" },
                   ...allTags.map((tag) => ({ value: tag, label: tag })),
@@ -130,9 +129,7 @@ export const BirdView = () => {
                 value={selectedTag}
                 onChange={handleTagChange}
               />
-            </div>
-            <div>
-              <Select
+            <Select
                 options={[
                   { value: "", label: "All components" },
                   ...allComponents.map((component) => ({
@@ -143,9 +140,7 @@ export const BirdView = () => {
                 value={selectedComponent}
                 onChange={handleComponentChange}
               />
-            </div>
-            <div>
-              <Select
+            <Select
                 options={[
                   { value: "", label: "All flows" },
                   ...allFlows.map((flow) => ({ value: flow, label: flow })),
@@ -153,7 +148,6 @@ export const BirdView = () => {
                 value={selectedFlow}
                 onChange={(e) => setSelectedFlow(e.target.value)}
               />
-            </div>
           </div>
         </div>
       </div>
