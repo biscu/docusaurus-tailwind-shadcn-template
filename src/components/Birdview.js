@@ -114,7 +114,7 @@ export const BirdView = () => {
       <div className="mb-8 space-y-4">
         <Bird size={24} />
         <h1 className="text-2xl font-bold">Birdview</h1>
-        <div className="flex md:flex-row gap-4 pb-12 max-w-full flex-col">
+        <div className="flex flex-row gap-4 pb-12 max-w-full">
           <SearchBar
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
