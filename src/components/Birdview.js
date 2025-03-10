@@ -158,7 +158,7 @@ export const BirdView = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-4 gap-6">
         {filteredImages.map((image, index) => (
           <ImageCard key={index} image={image} />
         ))}
