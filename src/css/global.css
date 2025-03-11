@@ -15,11 +15,6 @@
     src: url("../../static/font/postnordsansregular.woff2") format("woff2");
   }
 }
-
-button {
-  padding: 0;
-}
-
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -415,6 +410,10 @@ div[class^='docItemContainer_'] article img {
 }
 
 input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+}
+
+select:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
 }
 

@@ -2,8 +2,15 @@ import React, { useState, useMemo } from "react";
 import { Search, Filter, Bird } from "lucide-react";
 import { imageData } from "../data/imageData";
 import { useColorMode } from "@docusaurus/theme-common";
-import Select from "./Select/Select";
 import { Input } from "./ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectGroup,
+  SelectValue,
+} from "./ui/select"
 
 const ImageCard = ({ image }) => {
   const imageSrc =
@@ -20,26 +27,9 @@ const ImageCard = ({ image }) => {
 
 export const BirdView = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedFlow, setSelectedFlow] = useState("");
-  const [selectedComponents, setSelectedComponents] = useState([]);
-  const [selectedTag, setSelectedTag] = useState("");
-  const [selectedComponent, setSelectedComponent] = useState("");
-
-  const allTags = useMemo(
-    () => Array.from(new Set(imageData.flatMap((img) => img.tags))),
-    []
-  );
-
-  const allFlows = useMemo(
-    () => Array.from(new Set(imageData.map((img) => img.flow))),
-    []
-  );
-
-  const allComponents = useMemo(
-    () => Array.from(new Set(imageData.flatMap((img) => img.components))),
-    []
-  );
+  const [selectedTag, setSelectedTag] = useState("All tag");
+  const [selectedComponent, setSelectedComponent] = useState("All component");
+  const [selectedFlow, setSelectedFlow] = useState("All flow");
 
   const filteredImages = useMemo(() => {
     return imageData.filter((image) => {
@@ -53,61 +43,28 @@ export const BirdView = () => {
           comp.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
-      const matchesTags =
-        selectedTags.length === 0 ||
-        selectedTags.every((tag) => image.tags.includes(tag));
+      const matchesTag =
+        selectedTag === "All tag" ||
+        image.tags.some((tag) => tag === selectedTag);
 
-      const matchesFlow = !selectedFlow || image.flow === selectedFlow;
+      const matchesComponent =
+        selectedComponent === "All component" ||
+        image.components.some((comp) => comp === selectedComponent);
 
-      const matchesComponents =
-        selectedComponents.length === 0 ||
-        selectedComponents.every((comp) => image.components.includes(comp));
-
-      const matchesSelectedTag =
-        !selectedTag || image.tags.includes(selectedTag);
-
-      const matchesSelectedComponent =
-        !selectedComponent || image.components.includes(selectedComponent);
+      const matchesFlow =
+        selectedFlow === "All flow" ||
+        image.flow === selectedFlow;
 
       return (
-        matchesSearch &&
-        matchesTags &&
-        matchesFlow &&
-        matchesComponents &&
-        matchesSelectedTag &&
-        matchesSelectedComponent
+        matchesSearch && matchesTag && matchesComponent && matchesFlow
       );
     });
   }, [
     searchQuery,
-    selectedTags,
-    selectedFlow,
-    selectedComponents,
     selectedTag,
     selectedComponent,
+    selectedFlow,
   ]);
-
-  const handleTagSelect = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
-  const handleComponentSelect = (component) => {
-    setSelectedComponents((prev) =>
-      prev.includes(component)
-        ? prev.filter((c) => c !== component)
-        : [...prev, component]
-    );
-  };
-
-  const handleTagChange = (event) => {
-    setSelectedTag(event.target.value);
-  };
-
-  const handleComponentChange = (event) => {
-    setSelectedComponent(event.target.value);
-  };
 
   return (
     <div className="container px-4 py-8 mx-auto mt-12">
@@ -116,35 +73,51 @@ export const BirdView = () => {
         <h1 className="text-2xl font-bold">Birdview</h1>
         <div className="flex flex-col md:flex-row gap-4 pb-12 max-w-full">
           <Input type="text" placeholder="Search screens..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-          <div className="flex flex-row gap-4">
-            <Select
-                options={[
-                  { value: "", label: "All tags" },
-                  ...allTags.map((tag) => ({ value: tag, label: tag })),
-                ]}
-                value={selectedTag}
-                onChange={handleTagChange}
-              />
-            <Select
-                options={[
-                  { value: "", label: "All components" },
-                  ...allComponents.map((component) => ({
-                    value: component,
-                    label: component,
-                  })),
-                ]}
-                value={selectedComponent}
-                onChange={handleComponentChange}
-              />
-            <Select
-                options={[
-                  { value: "", label: "All flows" },
-                  ...allFlows.map((flow) => ({ value: flow, label: flow })),
-                ]}
-                value={selectedFlow}
-                onChange={(e) => setSelectedFlow(e.target.value)}
-              />
-          </div>
+          <Select value={selectedTag} onValueChange={(value) => setSelectedTag(value)}>
+            <SelectTrigger>
+              <div className="flex items-center gap-2">
+                <span>{selectedTag}</span>
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="All tag">All tag</SelectItem>
+                {imageData.flatMap((image) => image.tags).filter((tag, index, self) => self.indexOf(tag) === index).map((tag) => (
+                  <SelectItem key={tag} value={tag}>{tag}</SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select value={selectedComponent} onValueChange={(value) => setSelectedComponent(value)}>
+            <SelectTrigger>
+              <div className="flex items-center gap-2">
+                <span>{selectedComponent}</span>
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="All component">All component</SelectItem>
+                {imageData.flatMap((image) => image.components).filter((comp, index, self) => self.indexOf(comp) === index).map((comp) => (
+                  <SelectItem key={comp} value={comp}>{comp}</SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select value={selectedFlow} onValueChange={(value) => setSelectedFlow(value)}>
+            <SelectTrigger>
+              <div className="flex items-center gap-2">
+                <span>{selectedFlow}</span>
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="All flow">All flow</SelectItem>
+                {imageData.map((image) => image.flow).filter((flow, index, self) => self.indexOf(flow) === index).map((flow) => (
+                  <SelectItem key={flow} value={flow}>{flow}</SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
