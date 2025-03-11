@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { SearchX } from "lucide-react";
-import SearchBar from "../SearchBar/SearchBar";
 import Header from "@site/static/img/header.svg";
 import Header2 from "@site/static/img/header2.svg";
+import { Input } from "../ui/input";
 
 const icons = [
   { id: 1, name: "globe", svg: <Header /> },
@@ -47,11 +47,7 @@ const Illustrations = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <SearchBar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        placeholder="Search illustrations..."
-      />
+      <Input type="text" placeholder="Search illustrations..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
       {filteredIcons.length === 0 && (
         <div className="flex flex-col gap-3 justify-center items-center h-96">
           <SearchX />

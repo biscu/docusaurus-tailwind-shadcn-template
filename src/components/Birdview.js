@@ -2,8 +2,8 @@ import React, { useState, useMemo } from "react";
 import { Search, Filter, Bird } from "lucide-react";
 import { imageData } from "../data/imageData";
 import { useColorMode } from "@docusaurus/theme-common";
-import SearchBar from "./SearchBar/SearchBar";
 import Select from "./Select/Select";
+import { Input } from "./ui/input";
 
 const ImageCard = ({ image }) => {
   const imageSrc =
@@ -115,11 +115,7 @@ export const BirdView = () => {
         <Bird size={24} />
         <h1 className="text-2xl font-bold">Birdview</h1>
         <div className="flex flex-col md:flex-row gap-4 pb-12 max-w-full">
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            placeholder="Search screens..."
-          />
+          <Input type="text" placeholder="Search screens..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
           <div className="flex flex-row gap-4">
             <Select
                 options={[

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { SearchX } from "lucide-react";
-import SearchBar from "../SearchBar/SearchBar";
 import Globe from "@site/static/img/icons/globe.svg";
+import { Input } from "../ui/input";
 // import User from "@site/static/img/icons/user.svg";
 // import Cart from "@site/static/img/icons/cart.svg";
 
@@ -54,11 +54,7 @@ const IconTokens = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-center">
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          placeholder="Search icons..."
-        />
+        <Input type="text" placeholder="Search icons..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         <label className="flex gap-2 items-center">
           <span>With primary</span>
           <input
