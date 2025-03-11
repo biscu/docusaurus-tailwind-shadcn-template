@@ -16,6 +16,10 @@
   }
 }
 
+button {
+  padding: 0;
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));

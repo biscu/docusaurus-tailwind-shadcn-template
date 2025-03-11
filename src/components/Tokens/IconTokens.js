@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { SearchX } from "lucide-react";
 import Globe from "@site/static/img/icons/globe.svg";
 import { Input } from "../ui/input";
+import { Switch } from "../ui/switch";
+import { Label } from "../ui/label";
 // import User from "@site/static/img/icons/user.svg";
 // import Cart from "@site/static/img/icons/cart.svg";
 
@@ -53,17 +55,12 @@ const IconTokens = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-4">
         <Input type="text" placeholder="Search icons..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-        <label className="flex gap-2 items-center">
-          <span>With primary</span>
-          <input
-            type="checkbox"
-            checked={isPrimary}
-            onChange={(e) => setIsPrimary(e.target.checked)}
-            className="w-4 h-4"
-          />
-        </label>
+         <div className="flex items-center space-x-2">
+        <Label htmlFor="icon-theme">Primary</Label>
+        <Switch id="icon-theme" onCheckedChange={(e) => setIsPrimary(e)}/>
+      </div>
       </div>
       {filteredIcons.length === 0 && (
         <div className="flex flex-col gap-3 justify-center items-center h-96">
