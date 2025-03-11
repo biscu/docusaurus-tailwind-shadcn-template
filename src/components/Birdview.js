@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Search, Filter, Bird } from "lucide-react";
 import { imageData } from "../data/imageData";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -65,6 +65,55 @@ export const BirdView = () => {
     selectedComponent,
     selectedFlow,
   ]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const searchParam = params.get("search");
+    if (searchParam) {
+      setSearchQuery(searchParam);
+    }
+    const tagParam = params.get("tag");
+    if (tagParam) {
+      setSelectedTag(tagParam);
+    }
+    const componentParam = params.get("component");
+    if (componentParam) {
+      setSelectedComponent(componentParam);
+    }
+    const flowParam = params.get("flow");
+    if (flowParam) {
+      setSelectedFlow(flowParam);
+    }
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (searchQuery) {
+      params.set("search", searchQuery);
+    } else {
+      params.delete("search");
+    }
+    if (selectedTag !== "All tag") {
+      params.set("tag", selectedTag);
+    } else {
+      params.delete("tag");
+    }
+    if (selectedComponent !== "All component") {
+      params.set("component", selectedComponent);
+    } else {
+      params.delete("component");
+    }
+    if (selectedFlow !== "All flow") {
+      params.set("flow", selectedFlow);
+    } else {
+      params.delete("flow");
+    }
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params}`
+    );
+  }, [searchQuery, selectedTag, selectedComponent, selectedFlow]);
 
   return (
     <div className="container px-4 py-8 mx-auto mt-12">
