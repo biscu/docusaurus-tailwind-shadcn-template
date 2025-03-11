@@ -18,7 +18,7 @@ export default function Home() {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <div className="flex justify-center items-center text-3xl">
+      <div className="flex justify-center items-center text-3xl pt-12">
         <BirdView />
       </div>
     </Layout>

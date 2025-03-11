@@ -110,7 +110,7 @@ export const BirdView = () => {
   };
 
   return (
-    <div className="container px-4 py-8 mx-auto">
+    <div className="container px-4 py-8 mx-auto mt-12">
       <div className="mb-8 space-y-4">
         <Bird size={24} />
         <h1 className="text-2xl font-bold">Birdview</h1>
